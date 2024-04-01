@@ -39,7 +39,10 @@ test('theme button should toggle styles', () => {
   render(<App/>)
   fireEvent.click(screen.getByText('Current theme: light', {selector:'button'}))
   // TODO: change the expect to actually test something 😉
-  expect(queryByTestId(document.body.style.color)).toBe('rgb(51, 51, 51)');
+  const element = document.getElementById("container")
+  const cssObj = window.getComputedStyle(element, null);
+  console.log(cssObj)
+  expect(cssObj).toHaveStyle('color:#FFF');
 });
 
 /**

@@ -58,8 +58,10 @@ test('hidden button should toggle hidden content', async () => {
   // TODO: change the expect to actually test something 😉
   render(<App/>)
   fireEvent.click(screen.getByText('Show hidden content', {selector:'button'}))
-
   expect(screen.getByText('this content is hidden by default')).toBeTruthy();
+  fireEvent.click(screen.getByText('Hide hidden content', {selector:'button'}))
+  expect(screen.queryByText('this content is hidden by default')).not.toBeInTheDocument();
+
 });
 
 
